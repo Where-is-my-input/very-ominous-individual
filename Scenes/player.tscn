@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://ba5aa2t0kfl2p"]
+
+[ext_resource type="Script" path="res://Scenes/player.gd" id="1_mhc21"]
+[ext_resource type="Texture2D" uid="uid://dax8ods3tlfpx" path="res://Art/Player.png" id="2_sbtbl"]
+[ext_resource type="Script" path="res://Scenes/sfx.gd" id="3_glxcs"]
+[ext_resource type="AudioStream" uid="uid://ddcbtkgo5erc2" path="res://SFX/qubodupFireLoop.ogg" id="4_twatu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wsci"]
+size = Vector2(37, 40)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s2kkl"]
+polygon = PackedVector2Array(-16, -16, 0, -16, 16, -16, 8, 0, 8, 16, -8, 16, -8, 0, -16, 0)
+
+[node name="Player" type="CharacterBody2D"]
+light_mask = 3
+script = ExtResource("1_mhc21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6wsci")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_sbtbl")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+z_index = -1
+occluder = SubResource("OccluderPolygon2D_s2kkl")
+occluder_light_mask = 2
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(2, 2)
+
+[node name="LightDetection" type="Node2D" parent="SubViewport"]
+light_mask = 7
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport/LightDetection"]
+light_mask = 7
+visibility_layer = 7
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/LightDetection"]
+light_mask = 0
+offset_left = -8.0
+offset_top = 16.0
+offset_right = -7.0
+offset_bottom = 17.0
+
+[node name="sfx" type="Node" parent="."]
+script = ExtResource("3_glxcs")
+
+[node name="sfxBurning" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("4_twatu")

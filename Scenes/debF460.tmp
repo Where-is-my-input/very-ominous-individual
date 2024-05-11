@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx3qkkokcxjwf"]
+
+[ext_resource type="Script" path="res://Scenes/debug_room.gd" id="1_0ei8s"]
+[ext_resource type="PackedScene" uid="uid://ba5aa2t0kfl2p" path="res://Scenes/player.tscn" id="2_s13ij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht8ly"]
+size = Vector2(46, 42)
+
+[node name="DebugRoom" type="Node2D"]
+script = ExtResource("1_0ei8s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 0, 24, 0, 24, 112, 32, 152, 56, 152, 80, 176, 144, 176, 144, 216, 200, 216, 200, 176, 232, 176, 232, 136, 296, 136, 296, 160, 360, 184, 408, 184, 408, 264, 496, 264, 496, 368, 584, 368, 616, 296, 720, 296, 720, 376, 864, 376, 904, 416, 1016, 416, 1016, 248, 1088, 248, 1088, -8, 1160, -8, 1200, -8, 1192, 664, -40, 672, -40, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_s13ij")]
+position = Vector2(672, 176)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(272, 112)
+shape = SubResource("RectangleShape2D_ht8ly")
+debug_color = Color(0, 0.640473, 0.349366, 0.42)

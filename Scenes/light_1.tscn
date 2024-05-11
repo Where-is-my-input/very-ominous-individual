@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxbmrhh3f05kc"]
+
+[ext_resource type="PackedScene" uid="uid://cd7sgj5twj10i" path="res://Scenes/light_bulb.tscn" id="1_70qky"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hrd47"]
+polygon = PackedVector2Array(-8, 8, -8, 0, -8, -8, 8, -8, 8, 0, 8, 8, 24, 8, 16, -8, 16, -16, -16, -16, -16, -8, -24, 8)
+
+[node name="Light1" type="Node2D"]
+
+[node name="LightBulb" parent="." instance=ExtResource("1_70qky")]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, 8)
+occluder = SubResource("OccluderPolygon2D_hrd47")
+occluder_light_mask = 3

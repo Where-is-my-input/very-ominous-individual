@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo4khdlh3bcpu"]
+
+[ext_resource type="Script" path="res://Scenes/ctrl_ui.gd" id="1_y7akl"]
+
+[node name="ctrlUI" type="Control"]
+light_mask = 0
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_y7akl")
+
+[node name="lblPlayerHealth" type="Label" parent="."]
+light_mask = 0
+layout_mode = 0
+offset_right = 92.0
+offset_bottom = 23.0
+text = "6516511985"

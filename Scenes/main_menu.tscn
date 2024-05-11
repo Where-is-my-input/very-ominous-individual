@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://ciovatly52v81"]
+
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_x5788"]
+[ext_resource type="Texture2D" uid="uid://34skb887xd71" path="res://Art/GWJ/GWJ-Full-Logo-tag-4k.png" id="2_qilxn"]
+[ext_resource type="Texture2D" uid="uid://d4g1gikk0oixv" path="res://Art/GWJ/69-Void.png" id="3_lklog"]
+[ext_resource type="Texture2D" uid="uid://dohu0lqfgieqk" path="res://Art/GWJ/69-All-Cards.png" id="4_tboj6"]
+
+[node name="Node" type="Node"]
+
+[node name="MainMenu" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -745
+script = ExtResource("1_x5788")
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="StartGame" type="Button" parent="MainMenu/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start Game"
+
+[node name="Credits" type="Button" parent="MainMenu/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Credits"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 504.0
+offset_top = -80.0
+offset_right = 4504.0
+offset_bottom = 2170.0
+scale = Vector2(0.202798, 0.202798)
+texture = ExtResource("2_qilxn")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 688.0
+offset_top = 288.0
+offset_right = 3388.0
+offset_bottom = 1058.0
+scale = Vector2(0.165244, 0.165244)
+texture = ExtResource("3_lklog")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 688.0
+offset_top = 424.0
+offset_right = 2922.0
+offset_bottom = 1433.0
+scale = Vector2(0.199603, 0.199603)
+texture = ExtResource("4_tboj6")
+
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/StartGame" to="MainMenu" method="_on_start_game_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/Credits" to="MainMenu" method="_on_credits_pressed"]

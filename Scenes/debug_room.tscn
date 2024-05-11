@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx3qkkokcxjwf"]
+
+[ext_resource type="Script" path="res://Scenes/debug_room.gd" id="1_0ei8s"]
+[ext_resource type="PackedScene" uid="uid://ba5aa2t0kfl2p" path="res://Scenes/player.tscn" id="2_s13ij"]
+[ext_resource type="PackedScene" uid="uid://ofd47r5v4lbt" path="res://Scenes/rb_box.tscn" id="3_lyf3d"]
+[ext_resource type="PackedScene" uid="uid://dxbmrhh3f05kc" path="res://Scenes/light_1.tscn" id="6_ow0ou"]
+[ext_resource type="PackedScene" uid="uid://bo4khdlh3bcpu" path="res://Scenes/ctrl_ui.tscn" id="7_ei6fx"]
+
+[node name="DebugRoom" type="Node2D"]
+script = ExtResource("1_0ei8s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 0, 24, 0, 24, 112, 32, 152, 56, 152, 80, 176, 144, 176, 144, 216, 200, 216, 200, 176, 232, 176, 232, 136, 296, 136, 296, 160, 360, 184, 408, 184, 408, 264, 496, 264, 496, 368, 584, 368, 616, 296, 720, 296, 720, 376, 864, 376, 904, 416, 1016, 416, 1016, 248, 1088, 248, 1088, -8, 1160, -8, 1200, -8, 1192, 664, -40, 672, -40, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+light_mask = 0
+color = Color(0.366595, 0.366595, 0.366595, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_s13ij")]
+position = Vector2(672, 176)
+
+[node name="rbBox" parent="." instance=ExtResource("3_lyf3d")]
+position = Vector2(1016, 232)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -8.0
+offset_top = -24.0
+offset_right = 1240.0
+offset_bottom = 704.0
+color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+metadata/_edit_lock_ = true
+
+[node name="Light1" parent="." instance=ExtResource("6_ow0ou")]
+position = Vector2(520, 0)
+
+[node name="Light2" parent="." instance=ExtResource("6_ow0ou")]
+position = Vector2(1112, 8)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.75
+blend_mode = 1
+
+[node name="ctrlUI" parent="." instance=ExtResource("7_ei6fx")]
+
+[node name="rbBox2" parent="." instance=ExtResource("3_lyf3d")]
+position = Vector2(488, 248)
+
+[node name="reset" type="Button" parent="."]
+offset_left = 1088.0
+offset_top = 608.0
+offset_right = 1139.0
+offset_bottom = 639.0
+text = "Reset"
+
+[connection signal="pressed" from="reset" to="." method="_on_reset_pressed"]
