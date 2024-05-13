@@ -117,4 +117,5 @@ func _physics_process(delta):
 		#position.y += 1
 
 func _on_tm_dash_timeout():
+	if isDashing: velocity = Vector2(0,0)
 	isDashing = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dx3qkkokcxjwf"]
+[gd_scene load_steps=9 format=3 uid="uid://dx3qkkokcxjwf"]
 
 [ext_resource type="Script" path="res://Scenes/debug_room.gd" id="1_0ei8s"]
 [ext_resource type="PackedScene" uid="uid://ba5aa2t0kfl2p" path="res://Scenes/player.tscn" id="2_s13ij"]
@@ -7,26 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://dxbmrhh3f05kc" path="res://Scenes/light_1.tscn" id="6_ow0ou"]
 [ext_resource type="PackedScene" uid="uid://bo4khdlh3bcpu" path="res://Scenes/ctrl_ui.tscn" id="7_ei6fx"]
 [ext_resource type="PackedScene" uid="uid://dxxq2yo4e43xb" path="res://Scenes/moving_platform.tscn" id="7_w48nt"]
+[ext_resource type="PackedScene" uid="uid://36l7m8enl1ik" path="res://Scenes/tile_map.tscn" id="8_fjd61"]
 
 [node name="DebugRoom" type="Node2D"]
 script = ExtResource("1_0ei8s")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(16, 216)
-polygon = PackedVector2Array(0, 0, 24, 0, 24, 112, 32, 152, 56, 152, 80, 176, 144, 176, 144, 216, 200, 216, 200, 176, 232, 176, 232, 136, 296, 136, 296, 160, 360, 184, 408, 184, 408, 264, 496, 264, 496, 368, 584, 368, 616, 296, 720, 296, 720, 376, 864, 376, 904, 416, 1016, 416, 1016, 248, 1088, 248, 1088, -8, 1160, -8, 1200, -8, 1192, 664, -40, 672, -40, 0)
-metadata/_edit_lock_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
-light_mask = 0
-color = Color(0.366595, 0.366595, 0.366595, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_s13ij")]
 position = Vector2(672, 176)
 
 [node name="rbBox" parent="." instance=ExtResource("3_lyf3d")]
-position = Vector2(1032, 448)
+position = Vector2(1040, 328)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -54,13 +44,13 @@ offset_bottom = 639.0
 text = "Reset"
 
 [node name="button" parent="." instance=ExtResource("6_n2m25")]
-position = Vector2(688, 512)
+position = Vector2(696, 552)
 
 [node name="Light1" parent="button/lights" index="0" instance=ExtResource("6_ow0ou")]
-position = Vector2(-168, -512)
+position = Vector2(-216, -568)
 
 [node name="button2" parent="." instance=ExtResource("6_n2m25")]
-position = Vector2(1000, 632)
+position = Vector2(1000, 624)
 
 [node name="Light2" parent="button2/lights" index="0" instance=ExtResource("6_ow0ou")]
 position = Vector2(112, -624)
@@ -68,6 +58,9 @@ state = true
 
 [node name="MovingPlatform" parent="." instance=ExtResource("7_w48nt")]
 position = Vector2(400, 280)
+
+[node name="TileMap" parent="." instance=ExtResource("8_fjd61")]
+layer_0/tile_data = PackedInt32Array(524297, 65536, 6, 524298, 131072, 9, 458760, 65536, 6, 524296, 65536, 10, 458759, 65536, 7, 524295, 65536, 11, 524294, 65536, 5, 524293, 131072, 9, 524299, 131072, 9, 524300, 131072, 9, 524301, 65536, 5, 589837, 65536, 4, 655373, 65536, 4, 655374, 65536, 10, 589838, 65536, 5, 589839, 65536, 10, 524303, 65536, 11, 458767, 65536, 7, 458768, 65536, 10, 393232, 65536, 11, 327696, 65536, 7, 327695, 131072, 1, 524304, 65536, 10, 589835, 131072, 8, 589836, 131072, 7, 589834, 131072, 7, 589833, 131072, 8, 589832, 131072, 7, 589831, 131072, 7, 589830, 131072, 8, 589829, 65536, 4, 655365, 65536, 4, 655366, 65536, 4, 655367, 131072, 8, 655368, 131072, 7, 655369, 131072, 7, 655370, 65536, 4, 655371, 131072, 7, 655372, 65536, 4, 655364, 131072, 7, 655363, 131072, 8, 655362, 131072, 7, 655361, 131072, 8, 655360, 65536, 4, 589828, 131072, 7, 524292, 65536, 5, 524291, 131072, 8, 524290, 65536, 7, 589826, 65536, 5, 589825, 65536, 6, 589827, 65536, 11, 524289, 65536, 12, 524288, 65536, 4, 589824, 65536, 10, 458752, 131072, 7, 393216, 131072, 8, 458753, 131072, 9, 458754, 65536, 5, 458755, 65536, 5, 327680, 65536, 4, 262144, 131072, 8, 196608, 131072, 8, 131072, 131072, 9, 458751, 65536, 11, 393215, 65536, 11, 327679, 65536, 11, 262143, 65536, 11, 196607, 65536, 7, 524287, 65536, 11)
 
 [connection signal="pressed" from="reset" to="." method="_on_reset_pressed"]
 
