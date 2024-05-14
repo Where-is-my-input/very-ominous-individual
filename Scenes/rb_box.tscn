@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ofd47r5v4lbt"]
 
-[ext_resource type="Texture2D" uid="uid://cxa2qqsq4q687" path="res://icon.svg" id="1_y842b"]
+[ext_resource type="Texture2D" uid="uid://cylv42ib4c0k4" path="res://Art/box.png" id="1_pdh7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ht8ly"]
 size = Vector2(32, 32)
@@ -21,5 +21,5 @@ occluder = SubResource("OccluderPolygon2D_6xlx8")
 occluder_light_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.251826, 0.245272)
-texture = ExtResource("1_y842b")
+scale = Vector2(0.457143, 0.457143)
+texture = ExtResource("1_pdh7i")

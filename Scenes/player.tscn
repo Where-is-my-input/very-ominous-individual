@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba5aa2t0kfl2p"]
+[gd_scene load_steps=8 format=3 uid="uid://ba5aa2t0kfl2p"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_mhc21"]
 [ext_resource type="Texture2D" uid="uid://dax8ods3tlfpx" path="res://Art/Player.png" id="2_sbtbl"]
-[ext_resource type="Script" path="res://Scenes/sfx.gd" id="3_glxcs"]
 [ext_resource type="AudioStream" uid="uid://ddcbtkgo5erc2" path="res://SFX/qubodupFireLoop.ogg" id="4_twatu"]
+[ext_resource type="AudioStream" uid="uid://cpu4e85axr6pk" path="res://SFX/sfx_dash.wav" id="5_8clxs"]
+[ext_resource type="PackedScene" uid="uid://bo4khdlh3bcpu" path="res://Scenes/ctrl_ui.tscn" id="5_yyfxp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wsci"]
 size = Vector2(37, 40)
@@ -46,12 +47,27 @@ offset_top = 16.0
 offset_right = -7.0
 offset_bottom = 17.0
 
-[node name="sfx" type="Node" parent="."]
-script = ExtResource("3_glxcs")
-
-[node name="sfxBurning" type="AudioStreamPlayer2D" parent="sfx"]
-stream = ExtResource("4_twatu")
-
 [node name="tmDash" type="Timer" parent="."]
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="sfxDash" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_8clxs")
+
+[node name="sfxBurning" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_twatu")
+volume_db = -20.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_vertical_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ctrlUI" parent="CanvasLayer" instance=ExtResource("5_yyfxp")]
+offset_left = -576.0
+offset_top = -320.0
+offset_right = -536.0
+offset_bottom = -280.0
 
 [connection signal="timeout" from="tmDash" to="." method="_on_tm_dash_timeout"]

@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
-@onready var sfx = $sfx
 @onready var light_detection = $SubViewport/LightDetection
 @onready var sub_viewport = $SubViewport
 @onready var camera_2d = $SubViewport/LightDetection/Camera2D
 #@onready var color_rect = $SubViewport/LightDetection/ColorRect
 @onready var texture_rect = $SubViewport/LightDetection/TextureRect
 @onready var tm_dash = $tmDash
+@onready var sfx_dash = $SFX/sfxDash
+@onready var sfx_burning = $SFX/sfxBurning
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -40,11 +41,9 @@ func _process(_delta):
 	isLit = color.get_luminance() > 0.5
 	#print(color.get_luminance())
 	if isLit:
-		#sfx.playBurning(health)
 		#maybe take more damage from brightness
 		getHurt(1 * color.get_luminance())
 	elif health < maxHealth:
-		#sfx.stopBurning()
 		heal(1)
 
 func upgradeMaxHealth():
@@ -52,12 +51,15 @@ func upgradeMaxHealth():
 	Stats.emit_signal("setMaxHealth", maxHealth)
 
 func heal(v):
+	sfx_burning.stop()
 	health += v
 	if health > maxHealth:
 		health = maxHealth
 	Stats.emit_signal("healthChanged", health)
 
 func getHurt(value):
+	if !sfx_burning.playing:
+		sfx_burning.play()
 	health -= value
 	Stats.emit_signal("healthChanged", health)
 	if health <= 0:
@@ -96,6 +98,7 @@ func _physics_process(delta):
 		health -= 25
 		if health <= 0:
 			health = 1
+		sfx_dash.play()
 		isDashing = true
 		dashDirection = Vector2(direction, Input.get_axis("up", "down"))
 		tm_dash.start(0.1)
