@@ -6,8 +6,10 @@ extends CharacterBody2D
 #@onready var color_rect = $SubViewport/LightDetection/ColorRect
 @onready var texture_rect = $SubViewport/LightDetection/TextureRect
 @onready var tm_dash = $tmDash
-@onready var sfx_dash = $SFX/sfxDash
-@onready var sfx_burning = $SFX/sfxBurning
+@onready var sfx_burning = $sfxBurning
+@onready var sfx_dash = $sfxDash
+@onready var a_2d_grab = $a2dGrab
+@onready var cs_grab = $a2dGrab/csGrab
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -15,16 +17,22 @@ const DASH_SPEED = 1500
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var push_force = 80
+var push_force = 250
 var isLit = false
+
 var isDashing = false
 var maxDashes = 1
 var dashes = 1
+
+var isGrabbing = false
+var grabbedObject = null
 
 var dashDirection = Vector2()
 
 var health = 100
 var maxHealth = 100
+
+var facing = 1
 
 func _ready():
 	sub_viewport.debug_draw = 2
@@ -88,6 +96,7 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
 	if direction && !isDashing:
+		flip(direction)
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -115,10 +124,36 @@ func _physics_process(delta):
 			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 #Fall through one way platform
-#func _input(event):
-	#if(event.is_action_pressed("down") && is_on_floor()):
-		#position.y += 1
+func _input(event):
+	if(event.is_action_pressed("down") && is_on_floor()):
+		position.y += 1
+	if event.is_action_pressed("grab"):
+		cs_grab.set_deferred("disabled", false)
+	if event.is_action_released("grab"):
+		cs_grab.set_deferred("disabled", true)
+		isGrabbing = false
+		if grabbedObject != null: grabbedObject.released()
+		grabbedObject = null
 
 func _on_tm_dash_timeout():
 	if isDashing: velocity = Vector2(0,0)
 	isDashing = false
+
+func set_camera_limits(tilemap, playerCamera):
+	var map_limits = tilemap.get_used_rect()
+	var map_cellsize = tilemap.tile_set.tile_size
+	playerCamera.limit_left = map_limits.position.x * map_cellsize.x
+	playerCamera.limit_right = map_limits.end.x * map_cellsize.x
+	playerCamera.limit_top = map_limits.position.y * map_cellsize.y
+	playerCamera.limit_bottom = map_limits.end.y * map_cellsize.y
+
+func flip(dir):
+	if facing != dir:
+		facing = dir
+		scale.x *= -1
+
+func _on_a_2d_grab_body_entered(body):
+	if body is RigidBody2D && grabbedObject == null:
+		body.grabbed(self)
+		grabbedObject = body
+		return

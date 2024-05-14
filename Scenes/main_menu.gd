@@ -7,7 +7,7 @@ func _ready():
 	start_game.grab_focus()
 
 func _on_start_game_pressed():
-	get_tree().change_scene_to_file("res://Scenes/world_1.tscn")
+	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 
 func _on_credits_pressed():
 	pass # Replace with function body.

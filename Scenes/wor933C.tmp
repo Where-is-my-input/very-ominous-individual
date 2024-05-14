@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk7yjymhbno4u"]
+
+[ext_resource type="PackedScene" uid="uid://doineqxlcug27" path="res://Scenes/world_1.tscn" id="1_bp1sd"]
+[ext_resource type="Script" path="res://Scenes/world.gd" id="1_o3qst"]
+[ext_resource type="PackedScene" uid="uid://vw533qb4j8va" path="res://Scenes/sfx_background.tscn" id="2_cjpjo"]
+[ext_resource type="PackedScene" uid="uid://ba5aa2t0kfl2p" path="res://Scenes/player.tscn" id="3_c0y7f"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_o3qst")
+
+[node name="World1" parent="." instance=ExtResource("1_bp1sd")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.75
+blend_mode = 1
+
+[node name="sfxBackground" parent="." instance=ExtResource("2_cjpjo")]
+
+[node name="Player" parent="." instance=ExtResource("3_c0y7f")]
+position = Vector2(80, 320)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -10
+offset_left = -1600.0
+offset_top = -152.0
+offset_right = -352.0
+offset_bottom = 576.0
+scale = Vector2(2.85611, 1.18434)
+color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+metadata/_edit_lock_ = true

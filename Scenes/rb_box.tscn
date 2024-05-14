@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ofd47r5v4lbt"]
+[gd_scene load_steps=5 format=3 uid="uid://ofd47r5v4lbt"]
 
+[ext_resource type="Script" path="res://Scenes/rb_box.gd" id="1_bbooj"]
 [ext_resource type="Texture2D" uid="uid://cylv42ib4c0k4" path="res://Art/box.png" id="1_pdh7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ht8ly"]
@@ -9,6 +10,7 @@ size = Vector2(32, 32)
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [node name="rbBox" type="RigidBody2D" groups=["switch"]]
+script = ExtResource("1_bbooj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ht8ly")

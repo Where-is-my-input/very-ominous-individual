@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtmsrt57ce4i6"]
+
+[ext_resource type="PackedScene" uid="uid://36l7m8enl1ik" path="res://Scenes/tile_map.tscn" id="1_qbywk"]
+
+[node name="world2" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_qbywk")]
+unique_name_in_owner = true
+layer_0/tile_data = PackedInt32Array(0, 65536, 7, 65536, 65536, 4, 131072, 65536, 4, 131073, 65536, 4, 65537, 65536, 4, 1, 65536, 5, 131074, 65536, 4, 65538, 131072, 7, 2, 65536, 5, 131075, 65536, 4, 131076, 65536, 4, 131077, 65536, 4, 65541, 65536, 4, 65540, 131072, 8, 4, 65536, 6, 3, 65536, 6, 65539, 131072, 8, 131078, 65536, 4, 65542, 65536, 4, 5, 131072, 9, 6, 65536, 5, 131079, 131072, 7, 65543, 131072, 8, 7, 65536, 5, 131080, 131072, 7, 65544, 65536, 4, 8, 65536, 6)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = -10
+offset_left = -1600.0
+offset_top = -152.0
+offset_right = -352.0
+offset_bottom = 576.0
+scale = Vector2(4.60456, 1.07336)
+color = Color(0.0475577, 0.0475576, 0.0475576, 1)

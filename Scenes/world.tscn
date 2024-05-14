@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk7yjymhbno4u"]
+
+[ext_resource type="PackedScene" uid="uid://doineqxlcug27" path="res://Scenes/world_1.tscn" id="1_bp1sd"]
+[ext_resource type="Script" path="res://Scenes/world.gd" id="1_o3qst"]
+[ext_resource type="PackedScene" uid="uid://vw533qb4j8va" path="res://Scenes/sfx_background.tscn" id="2_cjpjo"]
+[ext_resource type="PackedScene" uid="uid://ba5aa2t0kfl2p" path="res://Scenes/player.tscn" id="3_c0y7f"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_o3qst")
+
+[node name="World1" parent="." instance=ExtResource("1_bp1sd")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.75
+blend_mode = 1
+
+[node name="sfxBackground" parent="." instance=ExtResource("2_cjpjo")]
+
+[node name="Player" parent="." instance=ExtResource("3_c0y7f")]
+position = Vector2(80, 320)
+
+[node name="RemoteTransform2D2" parent="Player" index="9"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 320)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="btnReset" type="Button" parent="CanvasLayer"]
+z_index = 5
+offset_left = 1056.0
+offset_top = 600.0
+offset_right = 1144.0
+offset_bottom = 640.0
+text = "Main Menu"
+
+[connection signal="pressed" from="CanvasLayer/btnReset" to="." method="_on_btn_reset_pressed"]
+
+[editable path="Player"]
