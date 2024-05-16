@@ -4,7 +4,7 @@ extends RigidBody2D
 var player = null
 var held = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if held && player != null:
 		global_transform.origin = player.global_position + Vector2(25 * player.facing,-15)
 

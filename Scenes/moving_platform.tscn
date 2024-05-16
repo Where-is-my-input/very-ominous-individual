@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_2qdis"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 184, 0, 0, 0, 0, 0, 184, 0, 0, 0, 0, 0, 256, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 184, 0, 0, 0, 0, 0, 184, 0, 0, 0, 0, 0, 768, 0)
 }
 point_count = 4
 
@@ -58,14 +58,14 @@ _data = {
 curve = SubResource("Curve2D_2qdis")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(256, 0)
-progress = 256.0
+position = Vector2(383.999, 0)
+progress = 384.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
 remote_path = NodePath("../../AnimatableBody2D")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Path2D"]
-position = Vector2(256, 0)
+position = Vector2(383.999, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_gr87i")

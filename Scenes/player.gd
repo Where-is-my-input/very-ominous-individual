@@ -21,8 +21,8 @@ var push_force = 250
 var isLit = false
 
 var isDashing = false
-var maxDashes = 1
-var dashes = 1
+var maxDashes = 0
+var dashes = 0
 
 var isGrabbing = false
 var grabbedObject = null
@@ -114,7 +114,7 @@ func _physics_process(delta):
 
 	if isDashing && !tm_dash.is_stopped():
 		velocity.x = dashDirection.x * DASH_SPEED
-		velocity.y = dashDirection.y * (DASH_SPEED / 4)
+		velocity.y = dashDirection.y * (DASH_SPEED / 2)
 
 	move_and_slide()
 	
@@ -157,3 +157,9 @@ func _on_a_2d_grab_body_entered(body):
 		body.grabbed(self)
 		grabbedObject = body
 		return
+
+func dashPowerUp():
+	maxDashes += 1
+
+func respawn(v):
+	global_position = v
