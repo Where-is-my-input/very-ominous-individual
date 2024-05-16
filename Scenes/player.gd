@@ -21,8 +21,11 @@ var push_force = 250
 var isLit = false
 
 var isDashing = false
-var maxDashes = 0
-var dashes = 0
+var maxDashes = Stats.newGame
+var dashes = maxDashes
+
+var maxJumps = Stats.newGame
+var jumps = maxJumps
 
 var isGrabbing = false
 var grabbedObject = null
@@ -87,9 +90,11 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	elif is_on_floor():
 		dashes = maxDashes
+		jumps = maxJumps
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") && jumps > 0:
+		jumps -= 1
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -160,6 +165,9 @@ func _on_a_2d_grab_body_entered(body):
 
 func dashPowerUp():
 	maxDashes += 1
+
+func jumpPowerUp():
+	maxJumps += 1
 
 func respawn(v):
 	global_position = v
