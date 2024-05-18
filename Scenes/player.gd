@@ -35,6 +35,8 @@ var dashDirection = Vector2()
 var health = 100
 var maxHealth = 100
 
+var knockbackPower = 1600
+
 var facing = 1
 
 func _ready():
@@ -76,8 +78,20 @@ func getHurt(value):
 	if health <= 0:
 		die()
 
+func playerGetHit(d, eV = Vector2(0,0)):
+	health -= d
+	knockback(eV)
+	if health <= 0:
+		die()
+
+func knockback(eGPos):
+	var kbPos = eGPos.direction_to(self.global_position)
+	velocity = Vector2(kbPos.x * knockbackPower, kbPos.y * (knockbackPower / 4))
+	move_and_slide()
+
 func die():
-	queue_free()
+	Stats.death.emit()
+	#queue_free()
 
 func get_average_color(texture):
 	var image = texture.get_image()
@@ -145,6 +159,7 @@ func _on_tm_dash_timeout():
 	isDashing = false
 
 func set_camera_limits(tilemap, playerCamera, globalPosition):
+	return
 	var map_limits = tilemap.get_used_rect()
 	var map_cellsize = tilemap.tile_set.tile_size
 	playerCamera.limit_left = map_limits.position.x * map_cellsize.x + globalPosition.x

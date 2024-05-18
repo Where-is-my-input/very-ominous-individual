@@ -70,13 +70,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="."]
 
-[node name="a2dGrab" type="Area2D" parent="."]
+[node name="a2dGrab" type="Area2D" parent="." groups=["grab"]]
 
 [node name="csGrab" type="CollisionShape2D" parent="a2dGrab"]
 position = Vector2(13, 0)
 shape = SubResource("RectangleShape2D_5dlc4")
 disabled = true
 debug_color = Color(0.586959, 0.378422, 1, 0.42)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
 [connection signal="timeout" from="tmDash" to="." method="_on_tm_dash_timeout"]
 [connection signal="body_entered" from="a2dGrab" to="." method="_on_a_2d_grab_body_entered"]

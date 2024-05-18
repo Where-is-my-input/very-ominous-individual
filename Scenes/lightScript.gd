@@ -8,3 +8,6 @@ func _ready():
 
 func switch():
 	light_bulb.switch()
+
+func setLightState():
+	light_bulb.setLightState(state)

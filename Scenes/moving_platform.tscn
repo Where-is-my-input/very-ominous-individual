@@ -74,14 +74,14 @@ state = false
 curve = SubResource("Curve2D_2qdis")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(502.675, 0)
-progress = 502.675
+position = Vector2(295.839, 0)
+progress = 295.841
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
 remote_path = NodePath("../../AnimatableBody2D")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Path2D"]
-position = Vector2(502.675, 0)
+position = Vector2(295.839, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_gr87i")

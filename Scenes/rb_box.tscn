@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ofd47r5v4lbt"]
+[gd_scene load_steps=6 format=3 uid="uid://ofd47r5v4lbt"]
 
 [ext_resource type="Script" path="res://Scenes/rb_box.gd" id="1_bbooj"]
 [ext_resource type="Texture2D" uid="uid://cylv42ib4c0k4" path="res://Art/box.png" id="1_pdh7i"]
@@ -8,6 +8,9 @@ size = Vector2(32, 32)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6xlx8"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryt1w"]
+size = Vector2(48, 48)
 
 [node name="rbBox" type="RigidBody2D" groups=["switch"]]
 script = ExtResource("1_bbooj")
@@ -25,3 +28,13 @@ occluder_light_mask = 3
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.457143, 0.457143)
 texture = ExtResource("1_pdh7i")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.794375, 0.794375)
+shape = SubResource("RectangleShape2D_ryt1w")
+disabled = true
+debug_color = Color(1, 0, 0.0352941, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

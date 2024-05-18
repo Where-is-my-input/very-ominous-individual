@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6rvxoasak8lk"]
+
+[ext_resource type="Script" path="res://Scenes/switch.gd" id="1_k0x2f"]
+[ext_resource type="Texture2D" uid="uid://4ebjb7sp27m6" path="res://Art/switchRight.png" id="1_x4tjw"]
+[ext_resource type="Texture2D" uid="uid://clk5h5ulfni6c" path="res://Art/switchLeft.png" id="2_c7a18"]
+[ext_resource type="AudioStream" uid="uid://c13j2yox7nrkm" path="res://SFX/switch_strength_stove_01.wav" id="4_54cii"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qbpg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x4tjw")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c7a18")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2f5nb"]
+size = Vector2(64, 48)
+
+[node name="switch" type="Node2D"]
+script = ExtResource("1_k0x2f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0qbpg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2f5nb")
+debug_color = Color(0.707414, 0.270318, 0.99548, 0.42)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_54cii")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

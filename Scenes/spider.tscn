@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://cms4wxksrlnji"]
+
+[ext_resource type="Script" path="res://Scenes/spider.gd" id="1_ddc48"]
+[ext_resource type="Texture2D" uid="uid://d3mh635uvmoba" path="res://Art/spider/spider1.png" id="1_ruslc"]
+[ext_resource type="Texture2D" uid="uid://cfc71upma7hyn" path="res://Art/spider/spider2.png" id="2_opbwr"]
+[ext_resource type="Texture2D" uid="uid://beb31lahqrifh" path="res://Art/spider/spider3.png" id="3_uj5o3"]
+[ext_resource type="AudioStream" uid="uid://dsbsxvfs2aq75" path="res://SFX/Spider Chattering.wav" id="5_0qotk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqvbt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ruslc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_opbwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uj5o3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpu0f"]
+size = Vector2(21.9947, 22.158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4yv4"]
+size = Vector2(28.5233, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlp7v"]
+size = Vector2(39.2724, 29.515)
+
+[node name="spider" type="CharacterBody2D" groups=["switch"]]
+script = ExtResource("1_ddc48")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uqvbt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.00089, 1.97401)
+shape = SubResource("RectangleShape2D_bpu0f")
+debug_color = Color(0, 0.48849, 0.293471, 0.42)
+
+[node name="detect" type="Area2D" parent="."]
+
+[node name="detechtionCollisstinpon" type="CollisionShape2D" parent="detect"]
+position = Vector2(-115.44, 12)
+scale = Vector2(7.61204, 1.04327)
+shape = SubResource("RectangleShape2D_u4yv4")
+debug_color = Color(5.77569e-07, 0.833026, 0.968602, 0.42)
+
+[node name="hit" type="Area2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="hit"]
+position = Vector2(-0.198838, 0.198838)
+scale = Vector2(1.63977, 1.63977)
+shape = SubResource("RectangleShape2D_qlp7v")
+debug_color = Color(1, 0, 0.0901961, 0.470588)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0qotk")
+
+[connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]
+[connection signal="body_exited" from="detect" to="." method="_on_detect_body_exited"]
+[connection signal="body_entered" from="hit" to="." method="_on_hit_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
