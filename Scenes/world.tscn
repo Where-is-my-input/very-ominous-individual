@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk7yjymhbno4u"]
+[gd_scene load_steps=9 format=3 uid="uid://dk7yjymhbno4u"]
 
 [ext_resource type="PackedScene" uid="uid://doineqxlcug27" path="res://Scenes/world_1.tscn" id="1_bp1sd"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_o3qst"]
 [ext_resource type="PackedScene" uid="uid://vw533qb4j8va" path="res://Scenes/sfx_background.tscn" id="2_cjpjo"]
 [ext_resource type="PackedScene" uid="uid://ba5aa2t0kfl2p" path="res://Scenes/player.tscn" id="3_c0y7f"]
 [ext_resource type="PackedScene" uid="uid://dtmsrt57ce4i6" path="res://Scenes/world_2.tscn" id="3_ssodn"]
+[ext_resource type="PackedScene" uid="uid://b5b3n27xhva7u" path="res://Scenes/world_3.tscn" id="4_lr4jb"]
+[ext_resource type="PackedScene" uid="uid://cbuc0r6vswjcl" path="res://Scenes/world_5.tscn" id="6_6nn7q"]
+[ext_resource type="PackedScene" uid="uid://b62lsc8o3ilvu" path="res://Scenes/world_4.tscn" id="7_5371r"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_o3qst")
@@ -14,6 +17,15 @@ script = ExtResource("1_o3qst")
 [node name="world2" parent="." instance=ExtResource("3_ssodn")]
 position = Vector2(4692, 414)
 
+[node name="world3" parent="." instance=ExtResource("4_lr4jb")]
+position = Vector2(7798, -828)
+
+[node name="world4" parent="." instance=ExtResource("7_5371r")]
+position = Vector2(9112, -2001)
+
+[node name="world5" parent="." instance=ExtResource("6_6nn7q")]
+position = Vector2(7798, -1725)
+
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.75
 blend_mode = 1
@@ -21,17 +33,20 @@ blend_mode = 1
 [node name="sfxBackground" parent="." instance=ExtResource("2_cjpjo")]
 
 [node name="Player" parent="." instance=ExtResource("3_c0y7f")]
-position = Vector2(6936, 96)
+position = Vector2(9008, -1480)
 
 [node name="RemoteTransform2D2" parent="Player" index="9"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(6936, 96)
+position = Vector2(9008, -1480)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="hud" type="CanvasLayer" parent="."]
 
 [node name="btnReset" type="Button" parent="hud"]
+visible = false
 z_index = 5
 offset_left = 1056.0
 offset_top = 600.0
@@ -40,7 +55,7 @@ offset_bottom = 640.0
 text = "Main Menu"
 
 [node name="background" type="CanvasLayer" parent="."]
-layer = -2
+layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="background"]
 z_index = -10
@@ -49,11 +64,14 @@ offset_top = -80.0
 offset_right = 992.0
 offset_bottom = 648.0
 scale = Vector2(1.33618, 1.07632)
-color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+color = Color(0.205118, 0.205117, 0.205117, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="background"]
 volume_db = -10.0
 
+[node name="tmrCheckpoint" type="Timer" parent="."]
+
 [connection signal="pressed" from="hud/btnReset" to="." method="_on_btn_reset_pressed"]
+[connection signal="timeout" from="tmrCheckpoint" to="." method="_on_tmr_checkpoint_timeout"]
 
 [editable path="Player"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtmsrt57ce4i6"]
+[gd_scene load_steps=11 format=3 uid="uid://dtmsrt57ce4i6"]
 
 [ext_resource type="PackedScene" uid="uid://36l7m8enl1ik" path="res://Scenes/tile_map.tscn" id="1_qbywk"]
 [ext_resource type="Script" path="res://Scenes/world_2.gd" id="1_ymmax"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ofd47r5v4lbt" path="res://Scenes/rb_box.tscn" id="5_e5gkf"]
 [ext_resource type="PackedScene" uid="uid://x05m68a4ulwc" path="res://Scenes/dash_power_up.tscn" id="6_d8jwc"]
 [ext_resource type="PackedScene" uid="uid://d1dtpvkkdilv2" path="res://Scenes/checkpoint.tscn" id="7_o3y37"]
+[ext_resource type="PackedScene" uid="uid://dexsmq823u8x1" path="res://Scenes/loadder.tscn" id="9_2jtg2"]
+[ext_resource type="PackedScene" uid="uid://bfrvv5bw3n7pl" path="res://Scenes/world_transition.tscn" id="10_xrueg"]
 
 [node name="world2" type="Node2D"]
 script = ExtResource("1_ymmax")
@@ -28,6 +30,7 @@ color = Color(0.0475577, 0.0475576, 0.0475576, 1)
 
 [node name="MovingPlatform" parent="." instance=ExtResource("3_g1jih")]
 position = Vector2(664, -120)
+state = true
 
 [node name="Light1" parent="." instance=ExtResource("2_s4vvx")]
 position = Vector2(960, -560)
@@ -36,6 +39,7 @@ state = true
 
 [node name="button" parent="." instance=ExtResource("4_1iseb")]
 position = Vector2(376, -136)
+metadata/_edit_lock_ = true
 
 [node name="Light2" parent="button/lights" index="0" instance=ExtResource("2_s4vvx")]
 position = Vector2(1496, 40)
@@ -61,15 +65,40 @@ position = Vector2(1952, -152)
 position = Vector2(2280, 24)
 
 [node name="checkpoint" parent="." instance=ExtResource("7_o3y37")]
-position = Vector2(-88, -464)
+position = Vector2(344, -512)
 
 [node name="checkpoint2" parent="." instance=ExtResource("7_o3y37")]
-position = Vector2(2720, -936)
+position = Vector2(2440, -952)
 
 [node name="Light2" parent="." instance=ExtResource("2_s4vvx")]
 position = Vector2(2072, -920)
 rotation = 0.812778
-scale = Vector2(0.717918, 0.541203)
+scale = Vector2(1.86165, 0.435927)
 state = true
+
+[node name="loadder" parent="." instance=ExtResource("9_2jtg2")]
+position = Vector2(144, -184)
+unload = 1
+
+[node name="loadder2" parent="." instance=ExtResource("9_2jtg2")]
+position = Vector2(-56, -184)
+load = 1
+
+[node name="worldTransition" parent="." instance=ExtResource("10_xrueg")]
+position = Vector2(-424, -88)
+scale = Vector2(2.23547, 10.1543)
+
+[node name="worldTransition2" parent="." instance=ExtResource("10_xrueg")]
+position = Vector2(3032, -824)
+scale = Vector2(3.16757, 17.6575)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -10
+offset_left = -728.0
+offset_top = -1352.0
+offset_right = 520.0
+offset_bottom = -624.0
+scale = Vector2(3.18063, 2.29382)
+color = Color(0.169246, 0.169245, 0.169245, 1)
 
 [editable path="button"]

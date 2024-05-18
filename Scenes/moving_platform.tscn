@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxxq2yo4e43xb"]
+[gd_scene load_steps=12 format=3 uid="uid://dxxq2yo4e43xb"]
 
+[ext_resource type="Script" path="res://Scenes/moving_platform.gd" id="1_i88qb"]
 [ext_resource type="Texture2D" uid="uid://coxdmiaw40x51" path="res://Art/platform.png" id="1_piovb"]
 
 [sub_resource type="Curve2D" id="Curve2D_2qdis"]
@@ -52,20 +53,35 @@ _data = {
 "move": SubResource("Animation_fijvt")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xb33m"]
+animation = &"move"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_k3pgo"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3nrus"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_xb33m")
+nodes/Animation/position = Vector2(350, 178)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_k3pgo")
+nodes/TimeScale/position = Vector2(720, 180)
+nodes/output/position = Vector2(1020, 260)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
 [node name="MovingPlatform" type="Node2D"]
+script = ExtResource("1_i88qb")
+state = false
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_2qdis")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(383.999, 0)
-progress = 384.0
+position = Vector2(502.675, 0)
+progress = 502.675
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
 remote_path = NodePath("../../AnimatableBody2D")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Path2D"]
-position = Vector2(383.999, 0)
+position = Vector2(502.675, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_gr87i")
@@ -85,3 +101,8 @@ libraries = {
 "": SubResource("AnimationLibrary_wg5wf")
 }
 autoplay = "move"
+
+[node name="AnimationTree" type="AnimationTree" parent="Path2D"]
+tree_root = SubResource("AnimationNodeBlendTree_3nrus")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0

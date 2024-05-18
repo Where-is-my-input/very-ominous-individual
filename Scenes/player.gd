@@ -141,16 +141,16 @@ func _input(event):
 		grabbedObject = null
 
 func _on_tm_dash_timeout():
-	if isDashing: velocity = Vector2(0,0)
+	if isDashing && !is_on_floor(): velocity = Vector2(0,0)
 	isDashing = false
 
-func set_camera_limits(tilemap, playerCamera):
+func set_camera_limits(tilemap, playerCamera, globalPosition):
 	var map_limits = tilemap.get_used_rect()
 	var map_cellsize = tilemap.tile_set.tile_size
-	playerCamera.limit_left = map_limits.position.x * map_cellsize.x
-	playerCamera.limit_right = map_limits.end.x * map_cellsize.x
-	playerCamera.limit_top = map_limits.position.y * map_cellsize.y
-	playerCamera.limit_bottom = map_limits.end.y * map_cellsize.y
+	playerCamera.limit_left = map_limits.position.x * map_cellsize.x + globalPosition.x
+	playerCamera.limit_right = map_limits.end.x * map_cellsize.x + globalPosition.x
+	playerCamera.limit_top = map_limits.position.y * map_cellsize.y + globalPosition.y
+	playerCamera.limit_bottom = map_limits.end.y * map_cellsize.y + globalPosition.y
 
 func flip(dir):
 	if facing != dir:

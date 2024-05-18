@@ -3,6 +3,10 @@ extends Node
 signal healthChanged(value)
 signal setMaxHealth(v)
 signal checkpoint(v)
+signal unload(i)
+signal load(i)
+signal setBoundaries(i)
+signal respawn()
 
 var newGame = 5
 
