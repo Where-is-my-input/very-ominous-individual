@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@onready var animation_player = $AnimationPlayer
 
 var speed = 100.0
 const JUMP_VELOCITY = -400.0
@@ -13,6 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var facing = -1
 
 func _ready():
+	animation_player.play("new_animation")
 	audio_stream_player_2d.play()
 	#print(audio_stream_player_2d.get_pitch_scale())
 
@@ -36,12 +37,14 @@ func _on_detect_body_entered(body):
 	if body.is_in_group("player"):
 		speed += chaseSpeed
 		audio_stream_player_2d.set_pitch_scale(5)
+	animation_player.play("new_animation_2")
 
 
 func _on_detect_body_exited(body):
 	if body.is_in_group("player"):
 		speed -= chaseSpeed
 		audio_stream_player_2d.set_pitch_scale(1)
+		animation_player.play("new_animation")
 
 func getHit(d):
 	hp -= d

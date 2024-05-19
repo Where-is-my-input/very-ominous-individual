@@ -11,7 +11,9 @@ signal death()
 signal dashCd()
 signal jumpCd()
 signal dashCollected()
+signal jumpCollected()
 signal gameOver()
+signal grabTutorial()
 
 var newGame = 0
 

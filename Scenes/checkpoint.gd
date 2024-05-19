@@ -10,5 +10,5 @@ func _on_area_2d_body_entered(body):
 		Stats.checkpoint.emit(body.global_position, parent.world)
 		collision_shape_2d.set_deferred("disabled", true)
 
-func enable(v):
+func enable(v, w):
 	collision_shape_2d.set_deferred("disabled", false)

@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var sfx_dash = $sfxDash
 @onready var a_2d_grab = $a2dGrab
 @onready var cs_grab = $a2dGrab/csGrab
+@onready var sfx_hit = $sfxHit
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -87,6 +88,7 @@ func getHurt(value):
 		die()
 
 func playerGetHit(d, eV = Vector2(0,0)):
+	sfx_hit.play()
 	health -= d
 	knockback(eV)
 	if health <= 0:
@@ -98,6 +100,8 @@ func knockback(eGPos):
 	move_and_slide()
 
 func die():
+	sfx_hit.play()
+	health = maxHealth
 	Stats.death.emit()
 	#queue_free()
 

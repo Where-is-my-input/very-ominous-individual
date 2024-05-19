@@ -72,3 +72,34 @@ offset_top = 578.0
 offset_right = 1094.0
 offset_bottom = 647.0
 text = "."
+
+[node name="notices" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="notices"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 72.0
+offset_bottom = 64.0
+scale = Vector2(26.9242, 3.25074)
+color = Color(0, 0, 0, 0.372549)
+
+[node name="lblNotice" type="Label" parent="notices/ColorRect"]
+layout_mode = 0
+offset_left = 10.6967
+offset_right = 324.697
+offset_bottom = 69.0
+scale = Vector2(0.0549841, 0.538098)
+theme_override_font_sizes/font_size = 25
+text = "You got dash"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="tmrNotice" type="Timer" parent="notices"]
+
+[connection signal="timeout" from="notices/tmrNotice" to="." method="_on_tmr_notice_timeout"]

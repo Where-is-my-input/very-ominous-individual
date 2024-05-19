@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://0n156v84rxyo"]
+
+[ext_resource type="Script" path="res://Scenes/grab_tutorial.gd" id="1_xlg2s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdfg6"]
+
+[node name="grabTutorial" type="Node2D"]
+script = ExtResource("1_xlg2s")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xdfg6")
+debug_color = Color(0.964706, 0.486275, 0.521569, 0.815686)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

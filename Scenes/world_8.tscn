@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbjhehcmvk8ru"]
+
+[ext_resource type="PackedScene" uid="uid://36l7m8enl1ik" path="res://Scenes/tile_map.tscn" id="1_77gmk"]
+[ext_resource type="Script" path="res://Scenes/world_1.gd" id="1_pr4qf"]
+[ext_resource type="PackedScene" uid="uid://dxbmrhh3f05kc" path="res://Scenes/light_1.tscn" id="2_0rkkh"]
+[ext_resource type="PackedScene" uid="uid://bfrvv5bw3n7pl" path="res://Scenes/world_transition.tscn" id="3_atem4"]
+[ext_resource type="PackedScene" uid="uid://dexsmq823u8x1" path="res://Scenes/loadder.tscn" id="4_721gj"]
+[ext_resource type="PackedScene" uid="uid://d1dtpvkkdilv2" path="res://Scenes/checkpoint.tscn" id="5_8x4t2"]
+
+[node name="world8" type="Node2D"]
+script = ExtResource("1_pr4qf")
+world = 8
+
+[node name="TileMap" parent="." instance=ExtResource("1_77gmk")]
+unique_name_in_owner = true
+layer_0/tile_data = PackedInt32Array(0, 131072, 1, 1, 131072, 0, 2, 131072, 0, 3, 131072, 0, 4, 131072, 0, 5, 131072, 0, 6, 131072, 0, 7, 131072, 0, 8, 131072, 0, 9, 131072, 0, 10, 131072, 0, 11, 131072, 0, 12, 131072, 0, 13, 131072, 0, 14, 131072, 0, 15, 131072, 0, 16, 65536, 12, 589840, 131072, 7, 524304, 131072, 8, 458768, 131072, 7, 393232, 131072, 7, 327696, 131072, 9, 589839, 65536, 4, 524303, 131072, 7, 458767, 131072, 8, 393231, 65536, 4, 327695, 65536, 6, 589838, 131072, 8, 524302, 65536, 4, 458766, 65536, 4, 393230, 65536, 4, 327694, 65536, 5, 589837, 131072, 8, 524301, 131072, 7, 458765, 131072, 7, 393229, 65536, 4, 327693, 65536, 6, 589836, 131072, 8, 524300, 65536, 4, 458764, 131072, 8, 393228, 65536, 4, 327692, 65536, 6, 589835, 131072, 8, 524299, 131072, 7, 458763, 131072, 7, 393227, 65536, 4, 327691, 65536, 5, 589834, 65536, 4, 524298, 131072, 8, 458762, 131072, 7, 393226, 65536, 4, 327690, 131072, 9, 589831, 131072, 7, 524295, 65536, 4, 458759, 131072, 7, 393223, 65536, 4, 327687, 65536, 5, 589830, 131072, 7, 524294, 131072, 8, 458758, 131072, 7, 393222, 131072, 8, 327686, 65536, 5, 589829, 131072, 8, 524293, 65536, 4, 458757, 65536, 4, 393221, 65536, 4, 327685, 131072, 9, 589826, 131072, 7, 524290, 131072, 7, 458754, 131072, 7, 393218, 131072, 7, 327682, 131072, 9, 589825, 131072, 7, 524289, 131072, 8, 458753, 131072, 8, 393217, 65536, 4, 327681, 65536, 6, 589824, 131072, 8, 524288, 131072, 8, 458752, 131072, 8, 393216, 131072, 7, 327680, 65536, 5, 589828, 131072, 7, 524292, 131072, 9, 589827, 65536, 4, 524291, 65536, 5, 589833, 131072, 7, 524297, 131072, 9, 589832, 131072, 7, 524296, 65536, 5, 196612, 65536, 12, 196611, 131072, 1, 196617, 65536, 12, 196616, 131072, 1, 131088, 65536, 12, 131087, 131072, 0, 131086, 131072, 0, 131085, 131072, 0, 131084, 131072, 0, 131083, 131072, 1)
+
+[node name="Light1" parent="." instance=ExtResource("2_0rkkh")]
+position = Vector2(277, 553)
+rotation = -3.13564
+scale = Vector2(1.57835, 0.275405)
+state = true
+
+[node name="Light2" parent="." instance=ExtResource("2_0rkkh")]
+position = Vector2(621, 553)
+rotation = -3.13564
+scale = Vector2(-1.8826, 0.278174)
+state = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -10
+offset_left = -104.0
+offset_top = -128.0
+offset_right = 1144.0
+offset_bottom = 600.0
+scale = Vector2(1.17557, 1.21555)
+color = Color(0.169246, 0.169245, 0.169245, 1)
+
+[node name="worldTransition" parent="." instance=ExtResource("3_atem4")]
+position = Vector2(40, 296)
+scale = Vector2(0.878239, 28.6668)
+
+[node name="worldTransition2" parent="." instance=ExtResource("3_atem4")]
+position = Vector2(1144, 256)
+scale = Vector2(0.878239, 28.6668)
+
+[node name="loadder" parent="." instance=ExtResource("4_721gj")]
+position = Vector2(88, 200)
+scale = Vector2(0.119579, 0.43479)
+load = 2
+
+[node name="loadder2" parent="." instance=ExtResource("4_721gj")]
+position = Vector2(136, 240)
+scale = Vector2(0.123606, 0.523286)
+unload = 2
+
+[node name="loadder3" parent="." instance=ExtResource("4_721gj")]
+position = Vector2(1104, 232)
+scale = Vector2(0.123606, 0.523286)
+load = 7
+
+[node name="loadder4" parent="." instance=ExtResource("4_721gj")]
+position = Vector2(1048, 232)
+scale = Vector2(0.123606, 0.523286)
+unload = 7
+
+[node name="checkpoint" parent="." instance=ExtResource("5_8x4t2")]
+position = Vector2(131, 16)
+scale = Vector2(0.175942, 0.658335)
+
+[node name="checkpoint2" parent="." instance=ExtResource("5_8x4t2")]
+position = Vector2(1043, -7)
+scale = Vector2(0.175942, 0.658335)

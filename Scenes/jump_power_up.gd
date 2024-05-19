@@ -9,4 +9,5 @@ func _on_area_2d_body_entered(body):
 		body.jumpPowerUp()
 		Stats.collected += 1
 		Stats.flJumpCollected = true
+		Stats.jumpCollected.emit()
 		queue_free()

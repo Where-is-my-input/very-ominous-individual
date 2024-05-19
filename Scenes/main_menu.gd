@@ -18,8 +18,12 @@ func _on_start_game_pressed():
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 
 func _on_credits_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/credits.tscn")
 
 
 func _on_check_button_toggled(toggled_on):
 	Stats.showTimer = toggled_on
+
+
+func _on_controls_pressed():
+	get_tree().change_scene_to_file("res://Scenes/controls.tscn")

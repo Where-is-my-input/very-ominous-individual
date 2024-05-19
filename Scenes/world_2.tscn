@@ -67,10 +67,20 @@ position = Vector2(1952, -152)
 position = Vector2(2280, 24)
 
 [node name="checkpoint" parent="." instance=ExtResource("7_o3y37")]
-position = Vector2(344, -512)
+position = Vector2(24, -224)
+scale = Vector2(0.283534, 0.596048)
 
 [node name="checkpoint2" parent="." instance=ExtResource("7_o3y37")]
-position = Vector2(2440, -952)
+position = Vector2(2776, -1016)
+scale = Vector2(0.283737, 0.570139)
+
+[node name="checkpoint4" parent="." instance=ExtResource("7_o3y37")]
+position = Vector2(2848, -312)
+scale = Vector2(0.283737, 0.570139)
+
+[node name="checkpoint5" parent="." instance=ExtResource("7_o3y37")]
+position = Vector2(1544, -320)
+scale = Vector2(0.246626, 0.387596)
 
 [node name="Light2" parent="." instance=ExtResource("2_s4vvx")]
 position = Vector2(2072, -920)
@@ -119,12 +129,12 @@ unload = 3
 [node name="loadder9" parent="." instance=ExtResource("9_2jtg2")]
 position = Vector2(2968, -112)
 scale = Vector2(0.215806, 0.430552)
-load = 7
+load = 8
 
 [node name="loadder10" parent="." instance=ExtResource("9_2jtg2")]
 position = Vector2(2856, -120)
 scale = Vector2(0.218298, 0.430275)
-unload = 7
+unload = 8
 
 [node name="worldTransition" parent="." instance=ExtResource("10_xrueg")]
 position = Vector2(-528, -456)

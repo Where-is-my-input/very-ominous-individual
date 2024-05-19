@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba5aa2t0kfl2p"]
+[gd_scene load_steps=10 format=3 uid="uid://ba5aa2t0kfl2p"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_mhc21"]
 [ext_resource type="Texture2D" uid="uid://dax8ods3tlfpx" path="res://Art/Player.png" id="2_sbtbl"]
+[ext_resource type="AudioStream" uid="uid://dgndurqupc34p" path="res://SFX/TailWhip.wav" id="4_2l08b"]
 [ext_resource type="AudioStream" uid="uid://ddcbtkgo5erc2" path="res://SFX/qubodupFireLoop.ogg" id="4_twatu"]
 [ext_resource type="AudioStream" uid="uid://cpu4e85axr6pk" path="res://SFX/sfx_dash.wav" id="5_8clxs"]
 [ext_resource type="PackedScene" uid="uid://bo4khdlh3bcpu" path="res://Scenes/ctrl_ui.tscn" id="5_yyfxp"]
@@ -57,6 +58,9 @@ offset_bottom = 17.0
 [node name="sfxDash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_8clxs")
 bus = &"Sfx"
+
+[node name="sfxHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2l08b")
 
 [node name="sfxBurning" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_twatu")

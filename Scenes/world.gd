@@ -8,6 +8,7 @@ extends Node2D
 @onready var world_5 = $world5
 @onready var world_6 = $world6
 @onready var world_7 = $World7
+@onready var world_8 = $world8
 
 @onready var camera_2d = $Camera2D
 @onready var audio_stream_player = $background/AudioStreamPlayer
@@ -20,6 +21,7 @@ const WORLD_4 = preload("res://Scenes/world_4.tscn")
 const WORLD_5 = preload("res://Scenes/world_5.tscn")
 const WORLD_6 = preload("res://Scenes/world_6.tscn")
 const WORLD_7 = preload("res://Scenes/world_7.tscn")
+const WORLD_8 = preload("res://Scenes/world_8.tscn")
 const ENDLESS_VOID_LOOP = preload("res://SoundTracks/endless_void_loop.wav")
 var checkPoint: Vector2 = Vector2(0,0)
 var checkpointCount = 0
@@ -57,6 +59,7 @@ func unloadWorlds():
 	world_5.queue_free()
 	world_6.queue_free()
 	world_7.queue_free()
+	world_8.queue_free()
 
 func _on_btn_reset_pressed():
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
@@ -65,7 +68,7 @@ func setCheckPoint(v, w):
 	checkPoint = v
 
 func _input(event):
-	if(event.is_action_pressed("respawn")):
+	if(event.is_action_pressed("respawn") && Stats.newGame > 0):
 		tmr_checkpoint.start(15)
 		checkpointCount += 1
 		if checkpointCount > 1:
@@ -88,13 +91,11 @@ func loadWorld(i):
 				world_1 = WORLD_1.instantiate()
 				world_1.global_position = Vector2(-896, 0)
 				self.add_child(world_1)
-				#setCameraBoundaries(world_1)
 		2: 
 			if world_2 == null:
 				world_2 = WORLD_2.instantiate()
 				world_2.global_position = Vector2(4692, 414)
 				self.add_child(world_2)
-				#setCameraBoundaries(world_2)
 		3: 
 			if world_3 == null:
 				world_3 = WORLD_3.instantiate()
@@ -120,6 +121,11 @@ func loadWorld(i):
 				world_7 = WORLD_7.instantiate()
 				world_7.global_position = Vector2(7797, 345)
 				self.add_child(world_7)
+		8: 
+			if world_8 == null:
+				world_8 = WORLD_8.instantiate()
+				world_8.global_position = Vector2(7797, 0)
+				self.add_child(world_8)
 
 func unloadWorld(i):
 	match i:
@@ -144,6 +150,9 @@ func unloadWorld(i):
 		7: 
 			if world_7 != null:
 				world_7.queue_free()
+		8: 
+			if world_8 != null:
+				world_8.queue_free()
 
 func setCameraBoundaries(newWorld):
 	player.set_camera_limits(newWorld.returnTileMap(), camera_2d, newWorld.global_position)
@@ -171,6 +180,9 @@ func setCameraBoundariesi(i):
 		7: 
 			if world_7 != null:
 				player.set_camera_limits(world_7.returnTileMap(), camera_2d, world_7.global_position)
+		8: 
+			if world_8 != null:
+				player.set_camera_limits(world_8.returnTileMap(), camera_2d, world_8.global_position)
 
 
 func _on_tmr_checkpoint_timeout():

@@ -96,9 +96,9 @@ position = Vector2(-2176, 36)
 light = 2
 
 [node name="checkpoint" parent="." instance=ExtResource("9_vlg4j")]
-position = Vector2(-288, -72)
-scale = Vector2(0.386352, 0.365655)
+position = Vector2(-176, -80)
+scale = Vector2(0.133041, 0.318342)
 
 [node name="checkpoint2" parent="." instance=ExtResource("9_vlg4j")]
-position = Vector2(-2192, 656)
-scale = Vector2(0.636273, 0.597974)
+position = Vector2(-2224, 696)
+scale = Vector2(0.133812, 0.639659)

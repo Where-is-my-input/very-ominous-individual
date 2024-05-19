@@ -79,8 +79,8 @@ position = Vector2(752, 256)
 position = Vector2(520, 400)
 
 [node name="checkpoint" parent="." instance=ExtResource("9_i6uuy")]
-position = Vector2(-56, 448)
-scale = Vector2(0.692548, 0.231784)
+position = Vector2(-8, 448)
+scale = Vector2(0.068533, 0.258007)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -10

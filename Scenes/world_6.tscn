@@ -115,11 +115,11 @@ scale = Vector2(0.294717, 0.406856)
 load = 1
 
 [node name="checkpoint" parent="." instance=ExtResource("10_mv6ut")]
-position = Vector2(-472, -232)
-scale = Vector2(0.668598, 0.409267)
+position = Vector2(-224, -280)
+scale = Vector2(0.325342, 0.505776)
 
 [node name="checkpoint2" parent="." instance=ExtResource("10_mv6ut")]
-position = Vector2(-2832, -232)
-scale = Vector2(0.668598, 0.409267)
+position = Vector2(-3776, -240)
+scale = Vector2(0.142726, 0.409267)
 
 [editable path="button"]
