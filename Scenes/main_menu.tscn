@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciovatly52v81"]
+[gd_scene load_steps=6 format=3 uid="uid://ciovatly52v81"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_x5788"]
 [ext_resource type="Texture2D" uid="uid://34skb887xd71" path="res://Art/GWJ/GWJ-Full-Logo-tag-4k.png" id="2_qilxn"]
 [ext_resource type="Texture2D" uid="uid://d4g1gikk0oixv" path="res://Art/GWJ/69-Void.png" id="3_lklog"]
 [ext_resource type="Texture2D" uid="uid://dohu0lqfgieqk" path="res://Art/GWJ/69-All-Cards.png" id="4_tboj6"]
+[ext_resource type="Texture2D" uid="uid://ccegoscbxx6fx" path="res://Art/playerGameOver.png" id="5_wymxu"]
 
 [node name="Node" type="Node"]
 
@@ -32,6 +33,10 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Credits"
 
+[node name="CheckButton" type="CheckButton" parent="MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "In Game Timer"
+
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 504.0
 offset_top = -80.0
@@ -56,5 +61,17 @@ offset_bottom = 1433.0
 scale = Vector2(0.199603, 0.199603)
 texture = ExtResource("4_tboj6")
 
+[node name="TextureRect4" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.294118)
+z_index = -3
+offset_left = -16.0
+offset_top = -208.0
+offset_right = 984.0
+offset_bottom = 792.0
+scale = Vector2(1.1858, 1.1858)
+mouse_filter = 2
+texture = ExtResource("5_wymxu")
+
 [connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/StartGame" to="MainMenu" method="_on_start_game_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/Credits" to="MainMenu" method="_on_credits_pressed"]
+[connection signal="toggled" from="MainMenu/CenterContainer/VBoxContainer/CheckButton" to="MainMenu" method="_on_check_button_toggled"]

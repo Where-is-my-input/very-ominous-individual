@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://dowq06fu427m3"]
+
+[ext_resource type="Script" path="res://Scenes/hud.gd" id="1_hmcbd"]
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource("1_hmcbd")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 648.0
+offset_top = 360.0
+offset_right = 688.0
+offset_bottom = 400.0
+scale = Vector2(0.430147, 0.432528)
+
+[node name="hours" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 844.103
+offset_top = 580.0
+offset_right = 902.103
+offset_bottom = 649.0
+text = "00"
+
+[node name="minutes" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 917.402
+offset_top = 580.0
+offset_right = 975.402
+offset_bottom = 649.0
+text = "00"
+
+[node name="seconds" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 990.701
+offset_top = 580.0
+offset_right = 1048.7
+offset_bottom = 649.0
+text = "00"
+
+[node name="miliseconds" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 580.0
+offset_right = 1151.0
+offset_bottom = 649.0
+text = "000"
+
+[node name="pontos" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 926.0
+offset_top = 577.0
+offset_right = 966.0
+offset_bottom = 646.0
+text = ":"
+
+[node name="pontos2" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 990.0
+offset_top = 576.0
+offset_right = 1030.0
+offset_bottom = 645.0
+text = ":"
+
+[node name="pontos3" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1054.0
+offset_top = 578.0
+offset_right = 1094.0
+offset_bottom = 647.0
+text = "."

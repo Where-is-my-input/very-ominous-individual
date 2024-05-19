@@ -26,3 +26,24 @@ offset_right = 1144.0
 offset_bottom = 19.0
 value = 100.0
 show_percentage = false
+
+[node name="pbDashCD" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 1144.0
+offset_bottom = 43.0
+scale = Vector2(0.999876, 0.349165)
+value = 100.0
+show_percentage = false
+
+[node name="pbJumpCD" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 1144.0
+offset_bottom = 35.0
+scale = Vector2(0.999876, 0.349165)
+max_value = 35.0
+value = 35.0
+show_percentage = false

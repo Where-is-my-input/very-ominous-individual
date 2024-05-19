@@ -14,7 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	audio_stream_player_2d.play()
-	print(audio_stream_player_2d.get_pitch_scale())
+	#print(audio_stream_player_2d.get_pitch_scale())
 
 func _physics_process(delta):
 	# Add the gravity.

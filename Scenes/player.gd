@@ -23,8 +23,10 @@ var isLit = false
 var isDashing = false
 var maxDashes = Stats.newGame
 var dashes = maxDashes
+var dashCD = 100
+var jumpCD = 35
 
-var maxJumps = Stats.newGame
+var maxJumps = Stats.newGame + 1
 var jumps = maxJumps
 
 var isGrabbing = false
@@ -47,6 +49,12 @@ func _ready():
 func _process(_delta):
 	#camera_2d.global_transform.origin = global_position
 	#Light detection
+	if dashCD < 100:
+		dashCD += 1
+		Stats.dashCd.emit(dashCD)
+	if jumpCD < 35:
+		jumpCD += 1
+		Stats.jumpCd.emit(jumpCD)
 	light_detection.global_position = global_position
 	var texture = sub_viewport.get_texture()
 	texture_rect.texture = texture
@@ -107,7 +115,8 @@ func _physics_process(delta):
 		jumps = maxJumps
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") && jumps > 0:
+	if Input.is_action_just_pressed("jump") && jumps > 0 && jumpCD >= 35:
+		jumpCD = 0
 		jumps -= 1
 		velocity.y = JUMP_VELOCITY
 
@@ -121,7 +130,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	# Handle dash.
-	if Input.is_action_just_pressed("dash") && !isDashing && dashes > 0 && direction != 0:
+	if Input.is_action_just_pressed("dash") && !isDashing && dashes > 0 && direction != 0 && dashCD >= 100:
+		dashCD = 0
 		dashes -= 1
 		health -= 25
 		if health <= 0:
@@ -159,7 +169,7 @@ func _on_tm_dash_timeout():
 	isDashing = false
 
 func set_camera_limits(tilemap, playerCamera, globalPosition):
-	return
+	#return
 	var map_limits = tilemap.get_used_rect()
 	var map_cellsize = tilemap.tile_set.tile_size
 	playerCamera.limit_left = map_limits.position.x * map_cellsize.x + globalPosition.x

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk7yjymhbno4u"]
+[gd_scene load_steps=12 format=3 uid="uid://dk7yjymhbno4u"]
 
 [ext_resource type="PackedScene" uid="uid://doineqxlcug27" path="res://Scenes/world_1.tscn" id="1_bp1sd"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_o3qst"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bc0t32eckpc5u" path="res://Scenes/world_6.tscn" id="6_y6r4k"]
 [ext_resource type="PackedScene" uid="uid://b62lsc8o3ilvu" path="res://Scenes/world_4.tscn" id="7_5371r"]
 [ext_resource type="PackedScene" uid="uid://dw7ykr2obnmx" path="res://Scenes/world_7.tscn" id="8_7qhmq"]
+[ext_resource type="PackedScene" uid="uid://dowq06fu427m3" path="res://Scenes/hud.tscn" id="11_kg7ch"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_o3qst")
@@ -49,20 +50,9 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-704, 248)
-zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
-position_smoothing_speed = 10.0
 
-[node name="hud" type="CanvasLayer" parent="."]
-
-[node name="btnReset" type="Button" parent="hud"]
-visible = false
-z_index = 5
-offset_left = 1056.0
-offset_top = 600.0
-offset_right = 1144.0
-offset_bottom = 640.0
-text = "Main Menu"
+[node name="hud" parent="." instance=ExtResource("11_kg7ch")]
 
 [node name="background" type="CanvasLayer" parent="."]
 layer = -1
@@ -81,7 +71,7 @@ volume_db = -10.0
 
 [node name="tmrCheckpoint" type="Timer" parent="."]
 
-[connection signal="pressed" from="hud/btnReset" to="." method="_on_btn_reset_pressed"]
+[connection signal="finished" from="background/AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="timeout" from="tmrCheckpoint" to="." method="_on_tmr_checkpoint_timeout"]
 
 [editable path="Player"]

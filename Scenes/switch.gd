@@ -15,6 +15,7 @@ func _ready():
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("grab") && !state:
+		Stats.collected += 1
 		audio_stream_player_2d.play()
 		setState(true)
 		match light:

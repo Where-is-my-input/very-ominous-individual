@@ -1,9 +1,12 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cajmnfybbu4g7"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cajmnfybbu4g7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u48ut"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbxlu"]
+bg_color = Color(0.991164, 0.991164, 0.991164, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bffw7"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(0, 0, 0, 1)
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00ygm"]
@@ -15,5 +18,7 @@ Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/styles/normal = SubResource("StyleBoxFlat_u48ut")
+CheckButton/styles/focus = SubResource("StyleBoxFlat_xbxlu")
+Label/font_sizes/font_size = 50
 ProgressBar/styles/background = SubResource("StyleBoxFlat_bffw7")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_00ygm")

@@ -26,16 +26,29 @@ var checkpointCount = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Stats.time = 0
+	Stats.deaths = 0
+	Stats.collected = 0
+	Stats.flDashCollected = false
+	Stats.flJumpCollected = false
+	Stats.light1 = true
+	Stats.light2 = true
+	Stats.light3 = true
+	Stats.light4 = true
 	checkPoint = player.global_position
-	#world_2.queue_free()
 	Stats.connect("checkpoint", setCheckPoint)
 	Stats.connect("load", loadWorld)
 	Stats.connect("unload", unloadWorld)
 	Stats.connect("setBoundaries", setCameraBoundariesi)
 	Stats.connect("death", death)
+	Stats.connect("gameOver", gameOver)
 	playST(ENDLESS_VOID_LOOP)
 	setCameraBoundaries(world_1)
 	unloadWorlds()
+
+func gameOver():
+	Stats.newGame += 1
+	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 func unloadWorlds():
 	world_2.queue_free()
@@ -60,6 +73,7 @@ func _input(event):
 		player.respawn(checkPoint)
 
 func death():
+	Stats.deaths += 1
 	player.respawn(checkPoint)
 
 func playST(st):
@@ -161,3 +175,7 @@ func setCameraBoundariesi(i):
 
 func _on_tmr_checkpoint_timeout():
 	checkpointCount = 0
+
+
+func _on_audio_stream_player_finished():
+	playST(ENDLESS_VOID_LOOP)
