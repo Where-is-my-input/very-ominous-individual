@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var sfx_hit = $sfxHit
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -550.0
 const DASH_SPEED = 1500
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

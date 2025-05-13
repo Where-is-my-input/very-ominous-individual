@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://br7m84sp363d0"]
 
-[ext_resource type="Script" path="res://Scenes/jump_power_up.gd" id="1_majsy"]
+[ext_resource type="Script" uid="uid://bv8irkhinlrgs" path="res://Scenes/jump_power_up.gd" id="1_majsy"]
 [ext_resource type="Texture2D" uid="uid://jxa37ce4rjyk" path="res://Art/jumppowerup.png" id="1_t2apl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdgc6"]
@@ -39,8 +39,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_46h6f"]
 _data = {
-"RESET": SubResource("Animation_s4web"),
-"new_animation": SubResource("Animation_w7pbm")
+&"RESET": SubResource("Animation_s4web"),
+&"new_animation": SubResource("Animation_w7pbm")
 }
 
 [node name="jumpPowerUp" type="Node2D"]

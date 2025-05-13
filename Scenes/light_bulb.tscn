@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cd7sgj5twj10i"]
 
-[ext_resource type="Script" path="res://Scenes/light_bulb.gd" id="1_jb4aj"]
+[ext_resource type="Script" uid="uid://doph8bfsnctac" path="res://Scenes/light_bulb.gd" id="1_jb4aj"]
 [ext_resource type="Texture2D" uid="uid://bqcrc7yglhea8" path="res://light.png" id="1_lpos0"]
 
 [sub_resource type="Gradient" id="Gradient_uynhl"]
@@ -25,6 +25,7 @@ shadow_enabled = true
 texture = ExtResource("1_lpos0")
 
 [node name="LightWithShadow" type="PointLight2D" parent="."]
+visible = false
 scale = Vector2(48.25, 48.25)
 energy = 5.0
 range_layer_max = 3

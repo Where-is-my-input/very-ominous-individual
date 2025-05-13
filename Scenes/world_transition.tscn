@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfrvv5bw3n7pl"]
 
-[ext_resource type="Script" path="res://Scenes/world_transition.gd" id="1_w6mon"]
+[ext_resource type="Script" uid="uid://c1u0ro4iffal7" path="res://Scenes/world_transition.gd" id="1_w6mon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqcae"]
 

@@ -1,18 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://vw533qb4j8va"]
 
 [ext_resource type="AudioStream" uid="uid://dtwjb4cj4wb14" path="res://SFX/Wind2.wav" id="1_6k6cq"]
-[ext_resource type="Script" path="res://Scenes/sfx_background.gd" id="1_lh4mp"]
+[ext_resource type="Script" uid="uid://ck5wmi7hhlkx3" path="res://Scenes/sfx_background.gd" id="1_lh4mp"]
 [ext_resource type="AudioStream" uid="uid://ctqo8am3arl0a" path="res://SFX/Wind3.ogg" id="2_vg2je"]
 [ext_resource type="AudioStream" uid="uid://b3wrn6sja5y8w" path="res://SFX/Wind.wav" id="3_a5lde"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dpevh"]
 streams_count = 3
 stream_0/stream = ExtResource("1_6k6cq")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("2_vg2je")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("3_a5lde")
-stream_2/weight = 1.0
 
 [node name="sfxBackground" type="Node"]
 script = ExtResource("1_lh4mp")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6rvxoasak8lk"]
 
-[ext_resource type="Script" path="res://Scenes/switch.gd" id="1_k0x2f"]
+[ext_resource type="Script" uid="uid://b2m0a0jbc2e58" path="res://Scenes/switch.gd" id="1_k0x2f"]
 [ext_resource type="Texture2D" uid="uid://4ebjb7sp27m6" path="res://Art/switchRight.png" id="1_x4tjw"]
 [ext_resource type="Texture2D" uid="uid://clk5h5ulfni6c" path="res://Art/switchLeft.png" id="2_c7a18"]
 [ext_resource type="AudioStream" uid="uid://c13j2yox7nrkm" path="res://SFX/switch_strength_stove_01.wav" id="4_54cii"]

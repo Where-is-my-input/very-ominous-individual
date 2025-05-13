@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bo4khdlh3bcpu"]
 
-[ext_resource type="Script" path="res://Scenes/ctrl_ui.gd" id="1_y7akl"]
+[ext_resource type="Script" uid="uid://beftru0qwton" path="res://Scenes/ctrl_ui.gd" id="1_y7akl"]
 
 [node name="ctrlUI" type="Control"]
 light_mask = 0

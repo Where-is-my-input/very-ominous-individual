@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg267e7mw458p"]
 
-[ext_resource type="Script" path="res://controls.gd" id="1_b5omt"]
+[ext_resource type="Script" uid="uid://d3ka8wh2ye2jf" path="res://controls.gd" id="1_b5omt"]
 [ext_resource type="Texture2D" uid="uid://ccegoscbxx6fx" path="res://Art/playerGameOver.png" id="2_tyxyp"]
 
 [node name="controls" type="Node"]

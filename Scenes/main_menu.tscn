@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ciovatly52v81"]
 
-[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_x5788"]
+[ext_resource type="Script" uid="uid://bt6nglepp30wg" path="res://Scenes/main_menu.gd" id="1_x5788"]
 [ext_resource type="Texture2D" uid="uid://34skb887xd71" path="res://Art/GWJ/GWJ-Full-Logo-tag-4k.png" id="2_qilxn"]
 [ext_resource type="Texture2D" uid="uid://d4g1gikk0oixv" path="res://Art/GWJ/69-Void.png" id="3_lklog"]
 [ext_resource type="Texture2D" uid="uid://dohu0lqfgieqk" path="res://Art/GWJ/69-All-Cards.png" id="4_tboj6"]

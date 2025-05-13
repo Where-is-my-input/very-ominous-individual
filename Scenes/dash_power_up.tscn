@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://x05m68a4ulwc"]
 
-[ext_resource type="Script" path="res://Scenes/dash_power_up.gd" id="1_burwy"]
+[ext_resource type="Script" uid="uid://3vvfr58mpi4m" path="res://Scenes/dash_power_up.gd" id="1_burwy"]
 [ext_resource type="Texture2D" uid="uid://2iwwe281k5ac" path="res://Art/dashUpgrade.png" id="2_wbrmw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1vwx"]
@@ -64,8 +64,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_alj4g"]
 _data = {
-"RESET": SubResource("Animation_0av4t"),
-"floating": SubResource("Animation_7yqo6")
+&"RESET": SubResource("Animation_0av4t"),
+&"floating": SubResource("Animation_7yqo6")
 }
 
 [node name="dashPowerUp" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://0n156v84rxyo"]
 
-[ext_resource type="Script" path="res://Scenes/grab_tutorial.gd" id="1_xlg2s"]
+[ext_resource type="Script" uid="uid://btd8lbolasxci" path="res://Scenes/grab_tutorial.gd" id="1_xlg2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdfg6"]
 

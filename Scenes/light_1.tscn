@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxbmrhh3f05kc"]
 
-[ext_resource type="Script" path="res://Scenes/lightScript.gd" id="1_7a3lh"]
+[ext_resource type="Script" uid="uid://1mxnr0u86dfn" path="res://Scenes/lightScript.gd" id="1_7a3lh"]
 [ext_resource type="PackedScene" uid="uid://cd7sgj5twj10i" path="res://Scenes/light_bulb.tscn" id="1_70qky"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hrd47"]

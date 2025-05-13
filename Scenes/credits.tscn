@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3kjvewybv5nl"]
 
-[ext_resource type="Script" path="res://Scenes/credits.gd" id="1_emlww"]
+[ext_resource type="Script" uid="uid://hg5110ooh1q0" path="res://Scenes/credits.gd" id="1_emlww"]
 [ext_resource type="Texture2D" uid="uid://ccegoscbxx6fx" path="res://Art/playerGameOver.png" id="1_kqda6"]
 
 [node name="Credits" type="Node"]
